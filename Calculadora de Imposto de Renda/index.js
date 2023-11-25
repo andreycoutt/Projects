@@ -1,24 +1,4 @@
-// Elabora um algoritmo para calcular o salário líquido de 5 pessoas
-// Solicite ao usuário que digite seu nome e o valor de seu salário bruto
-// Peça também, para o usuário digitar a quantidade de dependentes
-// Para cada um dos dependentes deve ser solicitado o ganho mensal. Este valor deverá ser adicionado ao salário bruto.
-// Calcule a renda familiar per capta
-// Caso a renda para cada membro da familia seja menor que R$ 500,00 a pessoa ficará isenta de imposto de renda, ou seja, não será calculado dentre as faixas salariasi e seu valor será zero
-// Caso a renda para cada membro da familia seja maior ou igual a R$ 500,00 o imposto de renda a ser descontado do salário bruto deve considerar as seguintes regras:
-// * salário bruto de 0,00 até 1.903,98 = 5%
-// * salário bruto de 1.903,99 até 2.826,66 = 7,5
-// * salário bruto a partir de 2.826,66 = 15%
-// Ao final, mostre na tela o valor do salário líquido
-
-// Armazene os salários liquidos em um coleçãoindexada (array)
-// Depois, cálcule a média de todos os salários liquidos. posteriosmente, mostre quantas pessoas estão abaixo desse valor médio.
-
-// Refatore seu código. Para isso, crie 2 funções, a saber:
-// *funçao para calcular o IR: esta função deve receber como parâmetro o salário bruto e a renda per capta, e, retornar ao final o valor IR;
-// *função para calcular a quantidade de salários liquidos menores que a média: esta funçao deve receber como parametros o array de salários líquidos e a média dos salarios liquidos, e, retornar a quantidade de salários líquidos menores que a média;
-
 const prompt = require('prompt-sync')();
-
 
 var salarios = [];
 var soma = 0;
@@ -38,7 +18,6 @@ for (var i = 1; i <= 5; i++) {
   }
 
   renda_per_capita = salario_bruto / (dependentes + 1);
-
 
   var imposto_renda = calcular_imposto_renda(salario_bruto, renda_per_capita);
   var salario_liquido = salario_bruto - imposto_renda;
@@ -60,14 +39,8 @@ media = soma / 5;
 
 qtd_pessoas = calcular_qtd_menores(salarios, media);
 
-
-
 console.log("A média dos salários liquidos é:", media);
 console.log("O numéro de pessoas com salário liquido menor que a média é:", qtd_pessoas);
-
-
-
-
 
 
 function calcular_imposto_renda(salario_bruto, renda_per_capita) {
@@ -86,8 +59,6 @@ function calcular_imposto_renda(salario_bruto, renda_per_capita) {
   }
   return imposto_renda;
 }
-
-
 
 
 function calcular_qtd_menores(salarios, media) {
